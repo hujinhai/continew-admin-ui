@@ -102,7 +102,6 @@
 </template>
 
 <script setup lang="ts">
-import type { RouteLocationNormalized } from 'vue-router'
 import ReloadIcon from './ReloadIcon.vue'
 import { useAppStore, useTabsStore } from '@/stores'
 import { useRouteListener } from '@/hooks'
@@ -132,7 +131,7 @@ listenerRouteChange(({ to }) => {
 
 const handleTabClick = (key: string | number) => {
   const obj = tabsStore.tabList.find((i) => i.path === key)
-  obj ? router.push(obj.fullPath || obj.path) : router.push(String(key))
+  router.push(obj ? (obj.fullPath || obj.path) : String(key))
 }
 
 const handleContextMenu = (e: MouseEvent, path: string) => {

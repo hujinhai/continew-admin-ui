@@ -1,7 +1,7 @@
 <template>
   <GiPageLayout>
     <GiTable
-      v-model:selectedKeys="selectedKeys"
+      v-model:selected-keys="selectedKeys"
       row-key="tableName"
       :data="dataList"
       :columns="columns"
@@ -151,10 +151,8 @@ const onDownload = async (tableNames: Array<string>) => {
 
 // 生成
 const onGenerate = async (tableNames: Array<string>) => {
-  const res = await generateCode(tableNames)
-  if (res.code === 0) {
-    Message.success('代码生成成功')
-  }
+  await generateCode(tableNames)
+  Message.success('代码生成成功')
 }
 </script>
 

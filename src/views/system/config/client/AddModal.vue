@@ -37,6 +37,9 @@ const { client_type, auth_type_enum, replaced_range_enum, logout_mode_enum } = u
 const [form, resetForm] = useResetReactive({
   activeTimeout: 1800,
   timeout: 86400,
+  refreshTokenTimeout: 2592000,
+  refreshTokenIdleTimeout: 0,
+  refreshTokenMode: 'COOKIE',
   isConcurrent: true,
   maxLoginCount: -1,
   status: 1,
@@ -45,14 +48,10 @@ const [form, resetForm] = useResetReactive({
 // 监听 isConcurrent 的变化，处理字段互斥逻辑
 watch(
   () => form.isConcurrent,
-  (newVal) => {
-    if (!newVal) {
-      form.maxLoginCount = -1
-      // replacedRange 只有在 isConcurrent=false 时才有意义
-    } else if (newVal) {
-      // 当 isConcurrent=true 时，清空 maxLoginCount
-      form.maxLoginCount = -1
-    }
+  () => {
+    form.maxLoginCount = -1
+    // 开关切换后 Arco 不会自动重跑校验，主动清除残留的错误提示
+    formRef.value?.formRef?.clearValidate('replacedRange')
   },
 )
 
@@ -119,6 +118,75 @@ const columns: ColumnItem[] = reactive([
     rules: [{ required: true, message: '请输入 Token 有效期' }],
   },
   {
+    label: () => (
+      <a-tooltip content="轮换不会延长该绝对有效期；单位：秒">
+        Refresh Token 有效期&nbsp;
+        <icon-question-circle />
+      </a-tooltip>
+    ),
+    field: 'refreshTokenTimeout',
+    type: 'input-number',
+    span: 12,
+    slots: {
+      append: () => (
+        <span style={{ width: '30px', textAlign: 'center' }}>秒</span>
+      ),
+    },
+    props: {
+      min: 60,
+      placeholder: '请输入 Refresh Token 有效期',
+    },
+    rules: [{ required: true, message: '请输入 Refresh Token 有效期' }],
+  },
+  {
+    label: () => (
+      <a-tooltip content="超过该时长没有业务请求即需要重新登录；只统计业务请求，页面挂机不算活跃。单位：秒，0 表示不限制">
+        Refresh Token 闲置失效&nbsp;
+        <icon-question-circle />
+      </a-tooltip>
+    ),
+    field: 'refreshTokenIdleTimeout',
+    type: 'input-number',
+    span: 12,
+    slots: {
+      append: () => (
+        <span style={{ width: '30px', textAlign: 'center' }}>秒</span>
+      ),
+    },
+    rules: [
+      {
+        // 与后端 ClientServiceImpl 保持一致：1~59 秒会把客户端锁死，提交前就拦下来
+        validator: (value: number | undefined, callback: (error?: string) => void) => {
+          if (typeof value === 'number' && value > 0 && value < 60) {
+            callback('需为 0（不限制）或不小于 60 秒')
+            return
+          }
+          callback()
+        },
+      },
+    ],
+    props: {
+      min: 0,
+      max: 315360000,
+      precision: 0,
+      placeholder: '0 表示不限制',
+    },
+  },
+  {
+    label: 'Refresh Token 传输模式',
+    field: 'refreshTokenMode',
+    type: 'select',
+    span: 12,
+    props: {
+      options: [
+        { label: 'Cookie（Web）', value: 'COOKIE' },
+        { label: '响应体（App / 小程序）', value: 'BODY' },
+      ],
+      placeholder: '请选择 Refresh Token 传输模式',
+    },
+    rules: [{ required: true, message: '请选择 Refresh Token 传输模式' }],
+  },
+  {
     label: '是否允许同一账号多地同时登录',
     field: 'isConcurrent',
     type: 'switch',
@@ -143,6 +211,17 @@ const columns: ColumnItem[] = reactive([
     disabled: () => {
       return form.isConcurrent
     },
+    rules: [
+      {
+        validator: (value: string, callback: (errorMessage?: string) => void) => {
+          if (!form.isConcurrent && !value) {
+            callback('不允许并发登录时必须选择顶人下线的范围')
+            return
+          }
+          callback()
+        },
+      },
+    ],
   },
   {
     label: () => (
@@ -171,6 +250,7 @@ const columns: ColumnItem[] = reactive([
         validator: (value: number, callback: (errorMessage?: string) => void) => {
           if (value <= 0 && value !== -1) {
             callback('最大登录数量只能为 -1 或正整数')
+            return
           }
           callback()
         },

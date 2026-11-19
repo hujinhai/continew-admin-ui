@@ -1,7 +1,7 @@
 # ContiNew Admin UI
 
 <a href="https://github.com/continew-org/continew-admin-ui" title="Release" target="_blank">
-<img src="https://img.shields.io/badge/SNAPSHOT-v4.2.0-%23ff3f59.svg" alt="Release" />
+<img src="https://img.shields.io/badge/RELEASE-v4.2.0-%23ff3f59.svg" alt="Release" />
 </a>
 <a href="https://vuejs.org/" title="Vue" target="_blank">
 <img src="https://img.shields.io/badge/Vue-3.5.4-%236CB52D.svg?logo=Vue.js" alt="Vue" />
@@ -25,17 +25,20 @@
 <a href="https://github.com/continew-org/continew-admin" title="GitHub Forks" target="_blank">
 <img src="https://img.shields.io/github/forks/continew-org/continew-admin?style=social" alt="GitHub Forks" />
 </a>
+<a href="https://atomgit.com/continew/continew-admin" title="AtomGit Stars" target="_blank">
+<img src="https://atomgit.com/continew/continew-admin/star/badge.svg" alt="AtomGit Stars" />
+</a>
+<a href="https://atomgit.com/continew/continew-admin" title="AtomGit Forks" target="_blank">
+<img src="https://atomgit.com/continew/continew-admin/fork/badge.svg" alt="AtomGit Forks" />
+</a>
 <a href="https://gitee.com/continew/continew-admin" title="Gitee Stars" target="_blank">
 <img src="https://gitee.com/continew/continew-admin/badge/star.svg?theme=dark" alt="Gitee Stars" />
 </a>
 <a href="https://gitee.com/continew/continew-admin" title="Gitee Forks" target="_blank">
 <img src="https://gitee.com/continew/continew-admin/badge/fork.svg?theme=dark" alt="Gitee Forks" />
 </a>
-<a href="https://gitcode.com/continew/continew-admin" title="GitCode Stars" target="_blank">
-<img src="https://gitcode.com/continew/continew-admin/star/badge.svg" alt="GitCode Stars" />
-</a>
 
-📚 [在线文档](https://continew.top) | 🚀 [演示地址](https://continew.top/docs/admin/guide/demo.html) | 💬 [吐槽广场（你就是 Talk King!）](https://continew.top/docs/admin/issue-hub.html) | [![问 DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/continew-org/continew-admin-ui)
+📚 [在线文档](https://continew.top) | 🚀 [演示地址](https://continew.top/demo) | 💬 [问题反馈](https://github.com/continew-org/continew-admin/issues)
 
 ## 简介
 
@@ -55,9 +58,9 @@ ContiNew Admin（Continue New Admin），页面现代美观，且专注设计与
 
 |         | 前端                                                         | 后端                                                         |
 | :------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Gitee   | [continew/continew-admin-ui](https://gitee.com/continew/continew-admin-ui) | [continew/continew-admin](https://gitee.com/continew/continew-admin) |
-| GitCode | [continew/continew-admin-ui](https://gitcode.com/continew/continew-admin-ui) | [continew/continew-admin](https://gitcode.com/continew/continew-admin) |
 | GitHub  | [continew-org/continew-admin-ui](https://github.com/continew-org/continew-admin-ui) | [continew-org/continew-admin](https://github.com/continew-org/continew-admin) |
+| AtomGit | [continew/continew-admin-ui](https://atomgit.com/continew/continew-admin-ui) | [continew/continew-admin](https://atomgit.com/continew/continew-admin) |
+| Gitee   | [continew/continew-admin-ui](https://gitee.com/continew/continew-admin-ui) | [continew/continew-admin](https://gitee.com/continew/continew-admin) |
 
 ## 项目起源
 
@@ -79,7 +82,7 @@ ContiNew Admin（Continue New Admin），页面现代美观，且专注设计与
 ## 为什么选我们？
 
 > [!TIP]
-> 更为完整的图文描述请查阅[《在线文档》](https://continew.top/docs/admin/guide/why-choose-us.html)。
+> 更为完整的图文描述请查阅[《在线文档》](https://continew.top/docs/admin/why-choose-us)。
 
 **AI 编程纪元已经开启，基于 ContiNew 项目开发，让 AI 助手“学习”更优雅的代码规范，“写出”更优质的代码。**
 
@@ -133,8 +136,8 @@ public class DeptController extends BaseController<DeptService, DeptResp, DeptDe
 ##  系统功能
 
 > [!TIP]
-> 更多功能和优化正在赶来💦，最新项目计划、进展请进群或查看 [吐槽广场](https://continew.top/docs/admin/issue-hub.html) 和 [更新日志](https://continew.top/docs/admin/changelog/)。
-> 功能不会用？请查看 [功能手册](https://continew.top/docs/admin/function/tenant/management.html)。
+> 更多功能和优化正在赶来💦，最新项目计划、进展请进群或查看 [问题反馈](https://github.com/continew-org/continew-admin/issues) 和 [更新日志](https://continew.top/docs/admin/reference/changelog)。
+> 功能不会用？请查看 [功能手册](https://continew.top/docs/admin/manual/tenant/management)。
 
 - 仪表盘：提供工作台、分析页，工作台提供功能快捷导航入口、最新公告、动态；分析页提供全面数据可视化能力
 - 个人中心：支持基础信息修改、密码修改、邮箱绑定、手机号绑定（并提供行为验证码、短信限流等安全处理）、第三方账号绑定/解绑（微信登录）、头像裁剪上传
@@ -153,7 +156,7 @@ public class DeptController extends BaseController<DeptService, DeptResp, DeptDe
   - 邮件配置：提供系统发件箱配置，也支持通过配置文件指定
   - 短信配置：提供系统短信服务配置，也支持通过配置文件指定
   - 存储配置：管理文件存储配置，支持本地存储、兼容 S3 协议对象存储
-  - 客户端配置：多端（PC端、小程序端等）认证管理，可设置不同的 token 有效期
+  - 客户端配置：多端（PC端、小程序端等）认证管理，可设置不同的 token 有效期，支持可轮换的 Refresh Token 双令牌会话
 - 在线用户：管理当前登录用户，可一键踢除下线
 - 日志管理：管理系统登录日志、操作日志，支持查看日志详情，包含请求头、响应头等报文信息
 - 短信日志：管理系统短信发送日志，支持删除、导出
@@ -233,7 +236,7 @@ public class DeptController extends BaseController<DeptService, DeptResp, DeptDe
 ## 快速开始
 
 > **Note**
-> 更详细的流程，请查看在线文档[《快速开始》](https://continew.top/docs/admin/guide/quick-start.html)。
+> 更详细的流程，请查看在线文档[《快速开始》](https://continew.top/docs/admin)。
 
 ```
 # 1.克隆本项目
@@ -341,37 +344,29 @@ continew-admin-ui
 
 ## 参与贡献
 
-ContiNew（Continue New）系列项目致力于通过持续迭代，为开发者提供舒适的开发体验。作为开源社区，我们的初衷是希望通过开源协作模式，提升技术透明度、放大集体智慧、共创优秀实践，源源不断地为企业级项目开发提供助力。
+ContiNew（Continue New）系列项目致力于通过持续迭代，为开发者提供舒适的开发体验。作为 OpenContiNew 开源社区，我们的初衷是希望通过开源协作模式，提升技术透明度、放大集体智慧、共创优秀实践，源源不断地为企业级项目开发提供助力。
 
-我们诚挚邀请广大社区用户为 ContiNew 项目贡献力量，包括但不限于 Issue 排查、测试验证、代码开发与重构等。每一份贡献，都是推动项目进步的重要力量（请查阅 [贡献指南](https://continew.top/about/contributing.html)）。欢迎各位感兴趣的小伙伴儿，[添加微信](https://continew.top/discussion.html) 讨论或认领任务。
+我们诚挚邀请广大社区用户为 ContiNew 项目贡献力量，贡献并不仅限于写代码，以下方式都非常欢迎：
+
+- 🐛 报告 Bug：提交 Issue 时请附上版本号、复现步骤与错误信息（[Issue 表单](https://github.com/continew-org/continew-admin-ui/issues/new/choose)）
+- 💡 建议功能：描述使用场景与期望效果
+- 📖 改进文档：修复错别字、完善说明、补充使用示例
+- 👀 审查 PR：帮助我们审查其他贡献者的 [Pull Request](https://github.com/continew-org/continew-admin-ui/pulls)
+- 💻 编写代码：修复 Bug、开发新功能、提升性能
+
+> [!IMPORTANT]
+> 安全漏洞请勿通过公开 Issue 反馈，请通过 [GitHub 安全通告](https://github.com/continew-org/continew-admin-ui/security/advisories/new) 负责任地披露。
 
 ### 分支说明
 
-ContiNew 系列项目采用清晰的分支策略，确保开发与维护有序进行。提交 PR 前，请确认目标分支是否处于活跃维护状态，版本支持情况请查看 [更新日志#版本支持](https://continew.top/docs/admin/changelog/)。
+ContiNew 系列项目采用清晰的分支策略，确保开发与维护有序进行。提交 PR 前，请确认目标分支是否处于活跃维护状态，版本支持情况请查看 [更新日志#版本支持](https://continew.top/docs/admin/reference/changelog)。
 
 | 分支  | 说明                                                         |
 | ----- | ------------------------------------------------------------ |
 | dev   | 开发分支，用于下个大版本的 SNAPSHOT 开发，接受新功能或功能优化 PR |
 | x.x.x | 维护分支，用于特定版本（如 vx.x.x）的 bug 修复，仅接受已有功能的修复 PR，不接受新功能 |
 
-### 流程步骤
-
-若您希望提交新功能或优化现有代码，请遵循以下步骤：
-
-1. 在开源平台上将项目 fork 到您的个人仓库
-2. 将 fork 的项目克隆到本地开发环境
-3. 基于当前维护的分支（如 dev）创建新分支（如 feat/newFeature），请勿直接修改源分支（源分支仅做同步 ContiNew 最新代码用）
-4. 在新分支上进行代码修改，完成后提交并 push 到您的远程仓库
-5. 在开源平台上创建 pull request (PR)，选择正确的源分支和目标分支，按模板填写说明信息（参考 [已合并的 PR](https://github.com/continew-org/continew-admin/pulls?q=is%3Apr+is%3Amerged) 可提高合并率）
-6. 提交 PR 后，系统会提示签署 CLA（贡献者协议）。请确保 commit 使用的邮箱与平台绑定邮箱一致（如果不一致，可以在本地通过 `git reset --soft HEAD~1` 回退，然后使用正确邮箱重新提交，最后 `git push -f` 即可，不需要重新创建 PR），然后使用该邮箱签署即可
-7. 耐心等待维护者审核并合并您的 PR（建议通过交流群进行快捷沟通）
-8. PR 合并后，下次贡献前请先同步最新代码，再重复步骤 3 开始
-
-> [!IMPORTANT]
-> 为了确保项目质量和协作效率，请注意以下事项：
->
-> 1. 代码和配置文件请参考已有风格，遵循清晰的结构与命名规范，提供完善的注释
-> 2. 提交时，请按照 [Angular 提交规范](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular) 编写 commit message（参考已有风格）
+详细贡献流程请查阅 [贡献指南](https://github.com/continew-org/continew-admin/blob/dev/CONTRIBUTING.md)。欢迎各位感兴趣的小伙伴儿，[添加微信](#反馈交流) 讨论或认领任务。
 
 ## 反馈交流
 
